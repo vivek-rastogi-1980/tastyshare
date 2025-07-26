@@ -4,6 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { supabase } from "../../../lib/supabaseClient";
 import Image from "next/image";
 import Link from "next/link";
+import { Header } from "../../components/header";
 
 interface Ingredient {
   name: string;
@@ -176,18 +177,7 @@ export default function EditRecipePage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-orange-50 via-white to-amber-100 font-sans">
-      {/* Header */}
-      <header className="sticky top-0 z-30 w-full bg-white/90 backdrop-blur border-b border-orange-100 shadow-sm">
-        <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2 select-none">
-            <span className="text-2xl font-extrabold text-orange-600 tracking-tight">TastyShare</span>
-          </Link>
-          <div className="flex gap-2">
-            <Link href="/profile" className="inline-flex items-center justify-center rounded-md border border-orange-500 text-orange-600 hover:bg-orange-50 font-semibold px-4 py-2 text-sm shadow-sm transition-colors">Profile</Link>
-            <Link href="/add-recipe" className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-sm shadow transition-colors">Add Recipe</Link>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <main className="flex-1 max-w-2xl mx-auto py-10 px-4 w-full">
         <h1 className="text-2xl font-bold mb-6 text-orange-600">Edit Recipe</h1>

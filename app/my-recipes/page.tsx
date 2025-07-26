@@ -3,6 +3,8 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import Image from "next/image";
 import Link from "next/link";
+import { Header } from "../components/header";
+import { RecipeVotes } from "../components/recipe-votes";
 
 const PAGE_SIZE = 6;
 
@@ -62,18 +64,7 @@ export default function MyRecipesPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-orange-50 via-white to-amber-100 font-sans">
-      {/* Header */}
-      <header className="sticky top-0 z-30 w-full bg-white/90 backdrop-blur border-b border-orange-100 shadow-sm">
-        <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2 select-none">
-            <span className="text-2xl font-extrabold text-orange-600 tracking-tight">TastyShare</span>
-          </Link>
-          <div className="flex gap-2">
-            <Link href="/profile" className="inline-flex items-center justify-center rounded-md border border-orange-500 text-orange-600 hover:bg-orange-50 font-semibold px-4 py-2 text-sm shadow-sm transition-colors">Profile</Link>
-            <Link href="/add-recipe" className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-sm shadow transition-colors">Add Recipe</Link>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <main className="flex-1 max-w-4xl mx-auto py-10 px-4 w-full">
         <h1 className="text-2xl font-bold mb-6 text-orange-600">My Recipes</h1>
@@ -94,6 +85,12 @@ export default function MyRecipesPage() {
                 )}
                 <div className="font-semibold text-sm text-gray-800 mb-1 group-hover:text-orange-600 transition-colors text-center w-full truncate">{recipe.title}</div>
               </Link>
+              
+              {/* Voting Section */}
+              <div className="mt-2 mb-2">
+                <RecipeVotes recipeId={recipe.id} userId={userId || undefined} />
+              </div>
+              
               <div className="flex gap-2 mt-2">
                 <Link
                   href={`/edit-recipe/${recipe.id}`}
