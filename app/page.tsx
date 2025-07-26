@@ -323,10 +323,10 @@ export default function Home() {
             {user ? (
               <>
                 <Link
-                  href="/add-recipe"
-                  className="inline-flex items-center justify-center rounded-md bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 text-sm shadow transition-colors"
+                  href="/profile"
+                  className="inline-flex items-center justify-center rounded-md border border-orange-500 text-orange-600 hover:bg-orange-50 font-semibold px-4 py-2 text-sm shadow-sm transition-colors"
                 >
-                  Add Recipe
+                  My Profile
                 </Link>
                 <button
                   type="button"

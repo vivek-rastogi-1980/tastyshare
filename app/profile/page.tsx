@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { supabase } from "../../lib/supabaseClient";
 import Link from "next/link";
+import { RecipeVotes } from "../components/recipe-votes";
 
 interface Profile {
   id: string;
@@ -310,13 +311,16 @@ export default function ProfilePage() {
 
                       {/* Post Actions */}
                       <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                        <Link 
-                          href={`/recipe/${recipe.id}`}
-                          className="text-orange-600 hover:text-orange-700 font-semibold text-sm"
-                        >
-                          View Recipe
-                        </Link>
-                        <div className="flex gap-4">
+                        <div className="flex items-center gap-4">
+                          <RecipeVotes recipeId={recipe.id} userId={userId || undefined} />
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <Link 
+                            href={`/recipe/${recipe.id}`}
+                            className="text-orange-600 hover:text-orange-700 font-semibold text-sm"
+                          >
+                            View Recipe
+                          </Link>
                           <Link 
                             href={`/edit-recipe/${recipe.id}`}
                             className="text-gray-500 hover:text-gray-700 text-sm"
